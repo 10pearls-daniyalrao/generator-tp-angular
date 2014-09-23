@@ -159,6 +159,15 @@ var TpAngularGenerator = yeoman.generators.NamedBase.extend({
   this.template('crud.js', 'app/controllers/'+this.name+'/'+this.name+'.js',context);
   this.template('crud.less', 'app/controllers/'+this.name+'/'+this.name+'.less',context);
   this.template('crud-spec.js', 'app/controllers/'+this.name+'/'+this.name+'-spec.js',context);
+  },
+  runNpm: function() {
+    console.log("\n Done loading files! \nInstalling Node modules and Bower packages...\n");
+    this.npmInstall("", function() {
+        console.log("\n Done installing node modules!\n Run 'npm start' to build and serve the project");
+    });
+    this.bowerInstall("", function() {
+        console.log("\n  Done installing bower Packages\n");
+    });
   }
 });
 
